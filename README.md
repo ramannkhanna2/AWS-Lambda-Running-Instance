@@ -17,6 +17,7 @@ Launch EC2 Instances  and Check the output in Lambda console or your CSV file in
 
 
 
+Note : Template while creating event : S3Put
 Note : Make sure to update bucket name and key(ur csv file name ) while configuring test event for the func like below snippet :
 ```
 "bucket": {
