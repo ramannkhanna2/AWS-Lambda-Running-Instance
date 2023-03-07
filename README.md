@@ -17,3 +17,16 @@ Launch EC2 Instances  and Check the output in Lambda console or your CSV file in
 
 
 
+Note : Make sure to update bucket name and key(ur csv file name ) while configuring test event for the func like below snippet :
+```
+"bucket": {
+          "name": "ec2-list-bucket",
+          "ownerIdentity": {
+            "principalId": "EXAMPLE"
+          },
+          "arn": "arn:aws:s3:::ec2-list-bucket"
+        },
+        "object": {
+          "key": "test.csv",
+          "size": 1024,
+          ```
