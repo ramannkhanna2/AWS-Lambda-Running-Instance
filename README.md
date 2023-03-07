@@ -30,3 +30,5 @@ Note : Make sure to update bucket name and key(ur csv file name ) while configur
           "key": "test.csv",
           "size": 1024,
           ```
+
+Note : Dont forget to add s3 and ec2 full access to role assigned to lambda func
