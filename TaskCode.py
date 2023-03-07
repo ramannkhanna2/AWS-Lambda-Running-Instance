@@ -30,7 +30,7 @@ def lambda_handler(event, context):
     # Get the bucket and object key from the Event
     bucket = event['Records'][0]['s3']['bucket']['name']
     key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'])
-    localFilename = 'Your-local-file-name'   #you can give any name.
+    localFilename = '/tmp/test.csv'   #you can give any name.
 
     # Download the file from S3 to the local filesystem
     s3_client.download_file(bucket, key, localFilename)
