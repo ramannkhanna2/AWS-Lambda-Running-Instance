@@ -22,7 +22,7 @@ def lambda_handler(event, context):
     # instantiate empty array
     for instance in instances:
         # for each instance, append to array and print instance id
-        ls.append(instance.id)
+        ls.append([instance.id,instance.instance_type])
     print(ls)
     
     
@@ -40,7 +40,7 @@ def lambda_handler(event, context):
 
     with open('/tmp/test.csv', 'w', newline='') as f:
       w = csv.writer(f)
-      sample=["InstanceId"]
+      sample=["InstanceId","InstanceType"]
       
       w.writerow(sample)
       for i in ls:
