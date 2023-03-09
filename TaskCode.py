@@ -5,6 +5,9 @@ import urllib
 # Connect S3 to client.
 s3_client = boto3.client('s3')
 
+# Connect SNS to client.
+sns_client = boto3.client('sns')
+
 def lambda_handler(event, context):
     ls = []
     
@@ -42,3 +45,20 @@ def lambda_handler(event, context):
     
     # Upload modified file
     s3_client.upload_file(localFilename, bucket, key)
+    
+    # Publish the report to the SNS topic
+    topic_arn = "arn:aws:sns:us-east-1:685421549691:runningEc2"
+    message = "Please find the attached running EC2-instances report at : https://ec2-list-bucket.s3.amazonaws.com/test.csv "
+    subject = "Running-EC2Instances Report"
+    sns_client.publish(
+        TopicArn=topic_arn,
+        Message=message,
+        Subject=subject,
+        MessageStructure='string',
+        MessageAttributes={
+            'Report': {
+                'DataType': 'Binary',
+                'BinaryValue': open(localFilename, 'rb').read()
+            }
+        }
+    )
