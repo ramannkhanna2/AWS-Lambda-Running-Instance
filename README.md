@@ -33,3 +33,7 @@ Note : Make sure to update bucket name and key(ur csv file name ) while configur
           ```
 
 Note : Dont forget to add s3 and ec2 full access to role assigned to lambda func
+
+
+Pre-requisite : Subscription to sns topic should be configured to allow this to work and also csv file in s3 bucket object should be public , 
+and make sure to add sns permission to lambda role 
